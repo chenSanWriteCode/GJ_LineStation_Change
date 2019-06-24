@@ -35,7 +35,7 @@ namespace GJ_LineStation_Change
                 if (model!=null)
                 {
                     x.attach = 1;
-                    x.stationId = model.stationId;
+                    x.newStationId = model.stationId;
                 }
             });
             log.Info(stationList.Count);
