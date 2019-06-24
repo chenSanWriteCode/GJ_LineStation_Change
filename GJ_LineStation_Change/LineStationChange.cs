@@ -50,22 +50,22 @@ namespace GJ_LineStation_Change
         public void changeDangerStation()
         {
             LineStationContext context = new LineStationContext();
-            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateLineStation(x));
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateLineDanger(x));
         }
         public void changeBigStation()
         {
             LineStationContext context = new LineStationContext();
-            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateLineStation(x));
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateLineBigStation(x));
         }
         public void changeBusBigStation()
         {
             LineStationContext context = new LineStationContext();
-            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateLineStation(x));
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateLineBigStationOfBus(x));
         }
         public void changeYBStation()
         {
             LineStationContext context = new LineStationContext();
-            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateLineStation(x));
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateYBStation(x,Attachtype));
         }
 
     }
