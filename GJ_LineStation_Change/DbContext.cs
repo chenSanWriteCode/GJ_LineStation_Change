@@ -91,7 +91,7 @@ namespace GJ_LineStation_Change
 
     public class DbContext<T> where T : class, new()
     {
-        private ILog log = LogManager.GetLogger($"DbContext:{nameof(T)}");
+        private ILog log = LogManager.GetLogger($"DbContext:{typeof(T).Name}");
         private static string connStr = ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString;
         public SqlSugarClient DB;
         public SimpleClient<T> CurrentDB { get { return new SimpleClient<T>(DB); } }

@@ -39,13 +39,14 @@ namespace GJ_LineStation_Change
                 }
             });
             log.Info($"站点个数共{stationList.Count}");
-            log.Info($"需要修改的上下行共{lineStationList.Where(x => x.attach == 1).Count()}条");
             if (Attachtype==1)
             {
+                log.Info($"需要修改的上下行共{lineStationList.Where(x => x.attach == 1).Count()}条");
                 lineStationList.Where(x => x.attach == 1).OrderBy(x=> x.lineName).ToList().ForEach(x => log.Info($"{x.lineName},{x.stationName},{x.derection}"));
             }
             else
             {
+                log.Info($"需要修改的线路共{lineStationList.Where(x => x.attach == 1).GroupBy(x => x.lineName).Count()}条");
                 lineStationList.Where(x => x.attach == 1).GroupBy(x => x.lineName).ToList().ForEach(x=>log.Info(x.Key));
             }
             
@@ -82,7 +83,7 @@ namespace GJ_LineStation_Change
                 //context.updateYBOtherInfo(item.Key, Attachtype);
             }
             //根据上下行id与站点id 更新新的站点id
-            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateYBStationId(x,Attachtype));
+            //lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateYBStationId(x,Attachtype));
         }
 
 
