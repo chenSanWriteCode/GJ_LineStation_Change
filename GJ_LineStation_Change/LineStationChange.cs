@@ -38,8 +38,18 @@ namespace GJ_LineStation_Change
                     x.newStationId = model.stationId;
                 }
             });
-            log.Info(stationList.Count);
-            log.Info(lineStationList.Where(x => x.attach == 1).Count());
+            log.Info($"站点个数共{stationList.Count}");
+            log.Info($"需要修改的上下行共{lineStationList.Where(x => x.attach == 1).Count()}条");
+            if (Attachtype==1)
+            {
+                lineStationList.Where(x => x.attach == 1).OrderBy(x=> x.lineName).ToList().ForEach(x => log.Info($"{x.lineName},{x.stationName},{x.derection}"));
+            }
+            else
+            {
+                lineStationList.Where(x => x.attach == 1).GroupBy(x => x.lineName).ToList().ForEach(x=>log.Info(x.Key));
+            }
+            
+
         }
 
         public void changeUDStation()
@@ -70,11 +80,8 @@ namespace GJ_LineStation_Change
             {
                 //context.backYBGuaiDian(item.Key, Attachtype);
                 //context.updateYBOtherInfo(item.Key, Attachtype);
-                foreach (var model in item)
-                {
-
-                }
             }
+            //根据上下行id与站点id 更新新的站点id
             lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateYBStationId(x,Attachtype));
         }
 
@@ -82,6 +89,8 @@ namespace GJ_LineStation_Change
     }
     public class LineStation
     {
+        public decimal lineId { get; set; }
+        public string lineName { get; set; }
         public decimal UDID { get; set; }
 
         public decimal stationId { get; set; }
