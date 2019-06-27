@@ -65,14 +65,14 @@ namespace GJ_LineStation_Change
         public void changeYBStation()
         {
             LineStationContext context = new LineStationContext();
-            var group = lineStationList.GroupBy(x => x.UDID);
+            var group = lineStationList.Where(x => x.attach == 1).GroupBy(x => x.UDID);
             foreach (var item in group)
             {
-                context.backYBGuaiDian(item.Key, Attachtype);
-                context.updateYBOtherInfo(item.Key, Attachtype);
+                //context.backYBGuaiDian(item.Key, Attachtype);
+                //context.updateYBOtherInfo(item.Key, Attachtype);
                 foreach (var model in item)
                 {
-                    
+
                 }
             }
             lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateYBStationId(x,Attachtype));

@@ -29,6 +29,9 @@ namespace GJ_LineStation_Change
             Console.ReadLine();
             change.getStationList();
 
+            Console.WriteLine("enter press can test:");
+            Console.ReadLine();
+            change.changeYBStation();
 
             Console.WriteLine("enter press can start 危险点表:");
             Console.ReadLine();
