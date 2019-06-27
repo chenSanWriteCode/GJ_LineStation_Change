@@ -16,7 +16,7 @@ namespace GJ_LineStation_Change
     {
         public List<LineStation> getLineStationList(int attach)
         {
-            string sql = $"select l.f_id lineId,l.线路名称,ud.f_id UDID,ud.公交线路,ls.站点id stationId,s.名称 stationName,s.地理方向 derection,ls.顺序 from gj_公交线路上下行表 ud,gj_公交线路表 l,gj_线路站点表 ls,gj_站点 s where ls.线路上下行id = ud.f_id and ud.线路id = l.f_id and ls.站点id = s.f_id and l.attach = {attach} and s.attach = 2 order by l.线路名称,ud.公交线路,ls.顺序";
+            string sql = $"select l.f_id lineId,l.线路名称 lineName,ud.f_id UDID,ud.公交线路,ls.站点id stationId,s.名称 stationName,s.地理方向 derection,ls.顺序 from gj_公交线路上下行表 ud,gj_公交线路表 l,gj_线路站点表 ls,gj_站点 s where ls.线路上下行id = ud.f_id and ud.线路id = l.f_id and ls.站点id = s.f_id and l.attach = {attach} and s.attach = 2 order by l.线路名称,ud.公交线路,ls.顺序";
             return base.getListBySql(sql);
         }
         private string getCommonUpdateSql(string tableName, LineStation model)

@@ -29,30 +29,31 @@ namespace GJ_LineStation_Change
             Console.ReadLine();
             change.getStationList();
 
+            bool startFlag =false;
 
-            Console.WriteLine("enter press can start 危险点表:");
-            Console.ReadLine();
+            Console.WriteLine("shall we start 危险点表:y/n");
+            startFlag = Console.ReadLine()=="y";
             //change.changeDangerStation();
             Console.ReadKey();
 
-            Console.WriteLine("enter press can start 大站表:");
-            Console.ReadLine();
+            Console.WriteLine("shall we start 大站表:y/n");
+            startFlag = Console.ReadLine() == "y";
             //change.changeBigStation();
             Console.ReadKey();
 
-            Console.WriteLine("enter press can start 公交车大站表:");
-            Console.ReadLine();
+            
+            Console.WriteLine("shall we start 公交车大站表:y/n");
+            startFlag = Console.ReadLine() == "y";
             //change.changeBusBigStation();
             Console.ReadKey();
 
-
-            Console.WriteLine("enter press can start 油补拐点表:");
-            Console.ReadLine();
+            Console.WriteLine("shall we start 油补拐点表:y/n");
+            startFlag = Console.ReadLine() == "y";
             //change.changeYBStation();
             Console.ReadKey();
 
-            Console.WriteLine("enter press can start gj_线路站点表:");
-            Console.ReadLine();
+            Console.WriteLine("shall we start gj_线路站点表:y/n");
+            startFlag = Console.ReadLine() == "y";
             //change.changeUDStation();
             Console.WriteLine("全部修改完毕");
             Console.ReadKey();
