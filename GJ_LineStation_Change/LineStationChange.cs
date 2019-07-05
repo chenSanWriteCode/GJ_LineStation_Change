@@ -79,13 +79,39 @@ namespace GJ_LineStation_Change
             var group = lineStationList.Where(x => x.attach == 1).GroupBy(x => x.UDID);
             foreach (var item in group)
             {
-                //context.backYBGuaiDian(item.Key, Attachtype);
-                //context.updateYBOtherInfo(item.Key, Attachtype);
+                context.backYBGuaiDian(item.Key, Attachtype);
+                context.updateYBOtherInfo(item.Key, Attachtype);
             }
             //根据上下行id与站点id 更新新的站点id
-            //lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateYBStationId(x,Attachtype));
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateYBStationId(x, Attachtype));
+        }
+        public void updateBaseInfo()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateBaseInfo(x));
+        }
+        public void updateRec()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec(x));
         }
 
+        public int getAllStationCount()
+        {
+            StationContext context = new StationContext();
+            return context.getAllStationCount();
+        }
+        public int getDeleteStationCount()
+        {
+            StationContext context = new StationContext();
+            return context.getDeleteStationCount();
+        }
+
+        public void deleteStations()
+        {
+            StationContext context = new StationContext();
+            context.deleteStations();
+        }
 
     }
     public class LineStation
@@ -98,6 +124,9 @@ namespace GJ_LineStation_Change
         public string stationName { get; set; }
         public string derection { get; set; }
         public decimal newStationId { get; set; }
+        /// <summary>
+        /// attach=1表示该站点存在市公交的站点，可以替换
+        /// </summary>
         public int attach { get; set; } = 2;
     }
     public class Station
