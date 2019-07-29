@@ -49,49 +49,49 @@ namespace GJ_LineStation_Change
             //7 gj_趟次
             Console.WriteLine("接下来 gj_趟次:y/n");
             doChange(change.updateRec_TangCi);
-
+            //8
             Console.WriteLine("接下来 危险点表:y/n");
             doChange(change.changeDangerStation);
-
+            //9
             Console.WriteLine("接下来 大站表:y/n");
             doChange(change.changeBigStation);
 
-            
+            //10
             Console.WriteLine("接下来 公交车大站表:y/n");
             doChange(change.changeBusBigStation);
-
+            //11
             Console.WriteLine("接下来 gj_gps_短消息历史表:y/n");
             doChange(change.updateRec_DuanXiaoXi);
-     
+            //12
             Console.WriteLine("接下来 gj_调度运行表:y/n");
             doChange(change.updateRec_YunXing);
 
             //Console.WriteLine("接下来 gj_趟次:y/n");
             //doChange(change.updateRec_TangCi);
-
+            //13
             Console.WriteLine("接下来 gj_串车表:y/n");
             doChange(change.updateRec_ChuanChe);
-
+            //14
             Console.WriteLine("接下来 gj_中间串车表:y/n");
             doChange(change.updateRec_ZhongJianChuanChe);
 
-
+            //15
             Console.WriteLine("接下来 gj_掉头表:y/n");
             doChange(change.updateRec_DiaoTou);
-
+            //16
             Console.WriteLine("接下来 gj_调度作业表_check:y/n");
             doChange(change.updateRec_ZuoYe_Check);
-
+            //17
             Console.WriteLine("接下来 gj_公交车大站表_new:y/n");
             doChange(change.updateRec_BusDaZhan_New);
 
-
+            //18
             Console.WriteLine("接下来 油补拐点表:y/n");
             doChange(change.changeYBStation);
-
+            //19
             Console.WriteLine("接下来 gj_报警历史表票款:y/n");
             doChange(change.updateRec_BaojingHis);
-
+            //20
             Console.WriteLine("接下来 gj_报警历史表:y/n");
             doChange(change.updateRec_Baojing);
 
