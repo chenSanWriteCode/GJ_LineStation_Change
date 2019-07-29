@@ -26,7 +26,7 @@ namespace GJ_LineStation_Change
         }
         public void updateLineStation(LineStation model)
         {
-            excuteSql(getCommonUpdateSql("test_qi", model));
+            excuteSql(getCommonUpdateSql("gj_线路站点表", model));
         }
 
         public void updateLineDanger(LineStation model)
@@ -65,40 +65,75 @@ update gj_调度模板车次表 t set t.结束站点id={} where t.线路上下�
 update gj_公交线路表 t set t.主站id={} where t.f_id={} and t.主站id={};
 update gj_公交线路表 t set t.副站id={} where t.f_id={} and t.副站id={};
          */
-         public void updateBaseInfo(LineStation model)
+         public void updateBaseInfo_MoBanCheCi(LineStation model)
         {
             excuteSql($"update gj_调度模板车次表 t set t.起始站点id={model.newStationId} where t.线路上下行id={model.UDID} and t.起始站点id={model.stationId}");
             excuteSql($"update gj_调度模板车次表 t set t.结束站点id={model.newStationId} where t.线路上下行id={model.UDID} and t.结束站点id={model.stationId}");
 
+            
+        }
+        public void updateBaseInfo_XianLu(LineStation model)
+        {
             excuteSql($"update gj_公交线路表 t set t.主站id={model.newStationId} where t.f_id={model.lineId} and t.主站id={model.stationId}");
             excuteSql($"update gj_公交线路表 t set t.副站id={model.newStationId} where t.f_id={model.lineId} and t.副站id={model.stationId}");
         }
 
-        public void updateRec(LineStation model)
+        public void updateRec_ZuoYe(LineStation model)
         {
-            excuteSql($" update gj_gps_短消息历史表 t set t.stopid={model.newStationId} where t.datetime>=to_date('2019-05-01','yyyy-MM-dd') and t.lindid={model.lineId} and t.stopid={model.stationId}");
-
-            excuteSql($" update gj_报警历史表 t set t.站点id={model.newStationId} where t.报警时间>=to_date('2019-05-01','yyyy-MM-dd') and t.线路id={model.lineId} and t.站点id={model.stationId}");
-
-            excuteSql($" update gj_报警历史表票款 t set t.站点id={model.newStationId} where t.报警时间>=to_date('2019-05-01','yyyy-MM-dd') and t.线路id={model.lineId} and t.站点id={model.stationId}");
-
-            excuteSql($" update gj_串车表 t set t.stopId={model.newStationId} where t.gpstime>=to_date('2019-05-01','yyyy-MM-dd') and t.线路id={model.lineId} and t.stopId={model.stationId}");
-
-            excuteSql($" update gj_调度计划表_new t set t.起始站id={model.newStationId} where t.日期>='2019-05-01' and t.线路上下行id={model.UDID} and t.起始站id={model.stationId}");
-            excuteSql($" update gj_调度计划表_new t set t.结束站id={model.newStationId} where t.日期>='2019-05-01' and t.线路上下行id={model.UDID} and t.结束站id={model.stationId}");
-
-            excuteSql($"update gj_调度运行表 t set t.start_stopid={model.newStationId} where t.run_day>='2019-05-01' and t.lineid={model.lineId} and t.start_stopid={model.stationId}");
-            excuteSql($"update gj_调度运行表 t set t.end_stopid={model.newStationId} where t.run_day>='2019-05-01' and t.lineid={model.lineId} and t.end_stopid={model.stationId}");
-
-            excuteSql($"update gj_调度作业表_new t set t.起始站id={model.newStationId} where t.日期>='2019-05-01' and t.线路id={model.lineId} and t.起始站id={model.stationId}");
-            excuteSql($"update gj_调度作业表_new t set t.结束站id={model.newStationId} where t.日期>='2019-05-01' and t.线路id={model.lineId} and t.结束站id={model.stationId}");
-
-            excuteSql($"update gj_中间串车表 t set t.stopid={model.newStationId} where t.gpstime>=to_date('2019-05-01','yyyy-MM-dd') and t.lineid={model.lineId} and t.stopid={model.stationId}");
-            excuteSql($"update gj_中间串车表 t set t.stopid2={model.newStationId} where t.gpstime>=to_date('2019-05-01','yyyy-MM-dd') and t.lineid={model.lineId} and t.stopid2={model.stationId}");
-
+            excuteSql($"update gj_调度作业表_new t set t.起始站id={model.newStationId} where  t.线路id={model.lineId} and t.起始站id={model.stationId}");
+            excuteSql($"update gj_调度作业表_new t set t.结束站id={model.newStationId} where  t.线路id={model.lineId} and t.结束站id={model.stationId}");
+        }
+        public void updateRec_JiHua(LineStation model)
+        {
+            excuteSql($" update gj_调度计划表_new t set t.起始站id={model.newStationId} where  t.线路上下行id={model.UDID} and t.起始站id={model.stationId}");
+            excuteSql($" update gj_调度计划表_new t set t.结束站id={model.newStationId} where  t.线路上下行id={model.UDID} and t.结束站id={model.stationId}");
+        }
+        public void updateRec_TangCi(LineStation model)
+        {
             excuteSql($"update gj_趟次 t set t.起始站id={model.newStationId} where t.日期>='2019-05-01' and t.线路id={model.lineId} and t.起始站id={model.stationId}");
             excuteSql($"update gj_趟次 t set t.结束站id={model.newStationId} where t.日期>='2019-05-01' and t.线路id={model.lineId} and t.结束站id={model.stationId}");
         }
+        public void updateRec_YunXing(LineStation model)
+        {
+            excuteSql($"update gj_调度运行表 t set t.start_stopid={model.newStationId} where t.run_day>='2019-05-01' and t.lineid={model.lineId} and t.start_stopid={model.stationId}");
+            excuteSql($"update gj_调度运行表 t set t.end_stopid={model.newStationId} where t.run_day>='2019-05-01' and t.lineid={model.lineId} and t.end_stopid={model.stationId}");
+        }
+        public void updateRec_ChuanChe(LineStation model)
+        {
+            excuteSql($" update gj_串车表 t set t.stopId={model.newStationId} where t.gpstime>=to_date('2019-05-01','yyyy-MM-dd') and t.线路id={model.lineId} and t.stopId={model.stationId}");
+        }
+        public void updateRec_ZhongJianChuanChe(LineStation model)
+        {
+            excuteSql($"update gj_中间串车表 t set t.stopid={model.newStationId} where t.gpstime>=to_date('2019-05-01','yyyy-MM-dd') and t.lineid={model.lineId} and t.stopid={model.stationId}");
+            excuteSql($"update gj_中间串车表 t set t.stopid2={model.newStationId} where t.gpstime>=to_date('2019-05-01','yyyy-MM-dd') and t.lineid={model.lineId} and t.stopid2={model.stationId}");
+        }
+        public void updateRec_Baojing(LineStation model)
+        {
+            excuteSql($" update gj_报警历史表 t set t.站点id={model.newStationId} where t.报警时间>=to_date('2019-05-01','yyyy-MM-dd') and t.线路id={model.lineId} and t.站点id={model.stationId}");
+        }
+        public void updateRec_BaojingHis(LineStation model)
+        {
+            excuteSql($" update gj_报警历史表票款 t set t.站点id={model.newStationId} where t.报警时间>=to_date('2019-05-01','yyyy-MM-dd') and t.线路id={model.lineId} and t.站点id={model.stationId}");
+        }
+        public void updateRec_DuanXiaoXi(LineStation model)
+        {
+            excuteSql($" update gj_gps_短消息历史表 t set t.stopid={model.newStationId} where t.datetime>=to_date('2019-05-01','yyyy-MM-dd') and t.lindid={model.lineId} and t.stopid={model.stationId}");
+        }
+
+        public void updateRec_DiaoTou(LineStation model)
+        {
+            excuteSql($" update gj_掉头表 t set t.stopid={model.newStationId} where t.gpstime>='2019-05-01 00:00:00' and t.线路id={model.lineId} and t.stopid={model.stationId}");
+        }
+        public void updateRec_ZuoYe_Check(LineStation model)
+        {
+            excuteSql($"update gj_调度作业表_check t set t.起始站id={model.newStationId} where t.日期>='2019-05-01' and t.线路id={model.lineId} and t.起始站id={model.stationId}");
+            excuteSql($"update gj_调度作业表_check t set t.结束站id={model.newStationId} where  t.线路id={model.lineId} and t.结束站id={model.stationId}");
+        }
+        public void updateRec_BusDaZhan_New(LineStation model)
+        {
+            excuteSql($" update gj_公交车大站表_new t set t.站点id={model.newStationId} where t.日期>='2019-05-01' and t.线路上下行id={model.UDID} and t.站点id={model.stationId}");
+        }
+
     }
     /*
      update gj_gps_短消息历史表 t set t.stopid={} where t.datetime>=to_date('2019-05-01','yyyy-MM-dd') and t.lindid={} and t.stopid={};

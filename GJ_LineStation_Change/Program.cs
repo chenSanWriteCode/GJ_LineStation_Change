@@ -20,41 +20,83 @@ namespace GJ_LineStation_Change
             }
 
             LineStationChange change = new LineStationChange(type);
-            Console.WriteLine("enter press can start linestation:");
+            Console.WriteLine("开始请按enter:");
             Console.ReadLine();
             change.getLineStationList();
-
-
-            Console.WriteLine("enter press can start station:");
-            Console.ReadLine();
+            //Console.WriteLine("enter press can start station:");
+            //Console.ReadLine();
             change.getStationList();
 
+            //1 gj_站点表
+            Console.WriteLine($"接下来要进行删除站点，合计站点共{change.getAllStationCount()},需要删除的站点共{change.getDeleteStationCount()},是否确认删除站点：y/n");
+            doChange(change.deleteStations);
+            Console.WriteLine("站点删除完毕");
+            //2 gj_调度模板车次表
+            Console.WriteLine("接下来 gj_调度模板车次表:y/n");
+            doChange(change.updateBaseInfo_MoBanCheCi);
+            //3 gj_调度作业表_new
+            Console.WriteLine("接下来 gj_调度作业表_new:y/n");
+            doChange(change.updateRec_ZuoYe);
+            //4 gj_调度计划表_new
+            Console.WriteLine("接下来 gj_调度计划表_new:y/n");
+            doChange(change.updateRec_JiHua);
+            //5 gj_公交线路表
+            Console.WriteLine("接下来 gj_公交线路表:y/n");
+            doChange(change.updateBaseInfo_XianLu);
+            //6 线路站点表
+            Console.WriteLine("接下来 gj_线路站点表:y/n");
+            doChange(change.changeUDStation);
+            //7 gj_趟次
+            Console.WriteLine("接下来 gj_趟次:y/n");
+            doChange(change.updateRec_TangCi);
 
-            Console.WriteLine("shall we start 危险点表:y/n");
+            Console.WriteLine("接下来 危险点表:y/n");
             doChange(change.changeDangerStation);
 
-            Console.WriteLine("shall we start 大站表:y/n");
+            Console.WriteLine("接下来 大站表:y/n");
             doChange(change.changeBigStation);
 
             
-            Console.WriteLine("shall we start 公交车大站表:y/n");
+            Console.WriteLine("接下来 公交车大站表:y/n");
             doChange(change.changeBusBigStation);
 
-            Console.WriteLine("shall we start gj_线路站点表:y/n");
-            doChange(change.changeUDStation);
+            Console.WriteLine("接下来 gj_gps_短消息历史表:y/n");
+            doChange(change.updateRec_DuanXiaoXi);
+     
+            Console.WriteLine("接下来 gj_调度运行表:y/n");
+            doChange(change.updateRec_YunXing);
 
-            Console.WriteLine("shall we start gj_调度模板车次表、gj_公交线路表:y/n");
-            doChange(change.updateBaseInfo);
+            //Console.WriteLine("接下来 gj_趟次:y/n");
+            //doChange(change.updateRec_TangCi);
 
-            Console.WriteLine("shall we start gj_gps_短消息历史表、gj_报警历史表、gj_报警历史表票款、gj_串车表、gj_调度计划表_new、gj_调度运行表、gj_调度作业表_new、gj_中间串车表、gj_趟次:y/n");
-            doChange(change.updateRec);
+            Console.WriteLine("接下来 gj_串车表:y/n");
+            doChange(change.updateRec_ChuanChe);
 
-            Console.WriteLine("shall we start 油补拐点表:y/n");
+            Console.WriteLine("接下来 gj_中间串车表:y/n");
+            doChange(change.updateRec_ZhongJianChuanChe);
+
+
+            Console.WriteLine("接下来 gj_掉头表:y/n");
+            doChange(change.updateRec_DiaoTou);
+
+            Console.WriteLine("接下来 gj_调度作业表_check:y/n");
+            doChange(change.updateRec_ZuoYe_Check);
+
+            Console.WriteLine("接下来 gj_公交车大站表_new:y/n");
+            doChange(change.updateRec_BusDaZhan_New);
+
+
+            Console.WriteLine("接下来 油补拐点表:y/n");
             doChange(change.changeYBStation);
+
+            Console.WriteLine("接下来 gj_报警历史表票款:y/n");
+            doChange(change.updateRec_BaojingHis);
+
+            Console.WriteLine("接下来 gj_报警历史表:y/n");
+            doChange(change.updateRec_Baojing);
+
             Console.WriteLine("全部修改完毕，如果还要市公交或开发区没有处理，请重启程序");
-            Console.WriteLine($"接下来要进行删除站点，合计站点共{change.getAllStationCount()},需要删除的站点共{change.getDeleteStationCount()},是否确认删除站点：y/n");
-            doChange(change.deleteStations);
-            Console.WriteLine("站点删除完毕，请关闭程序");
+            
             Console.ReadKey();
         }
         public static  void doChange(Action method)

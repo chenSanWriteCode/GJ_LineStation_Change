@@ -76,24 +76,90 @@ namespace GJ_LineStation_Change
         public void changeYBStation()
         {
             LineStationContext context = new LineStationContext();
-            var group = lineStationList.Where(x => x.attach == 1).GroupBy(x => x.UDID);
-            foreach (var item in group)
-            {
-                context.backYBGuaiDian(item.Key, Attachtype);
-                context.updateYBOtherInfo(item.Key, Attachtype);
-            }
+            //var group = lineStationList.Where(x => x.attach == 1).GroupBy(x => x.UDID);
+            //foreach (var item in group)
+            //{
+            //    context.backYBGuaiDian(item.Key, Attachtype);
+            //    context.updateYBOtherInfo(item.Key, Attachtype);
+            //}
             //根据上下行id与站点id 更新新的站点id
             lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateYBStationId(x, Attachtype));
         }
-        public void updateBaseInfo()
+        public void updateBaseInfo_MoBanCheCi()
         {
             LineStationContext context = new LineStationContext();
-            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateBaseInfo(x));
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateBaseInfo_MoBanCheCi(x));
         }
-        public void updateRec()
+
+        public void updateBaseInfo_XianLu()
         {
             LineStationContext context = new LineStationContext();
-            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec(x));
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateBaseInfo_XianLu(x));
+        }
+        
+        public void updateRec_ZuoYe()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_ZuoYe(x));
+        }
+
+        public void updateRec_JiHua()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_JiHua(x));
+        }
+        public void updateRec_DuanXiaoXi()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_DuanXiaoXi(x));
+        }
+        public void updateRec_TangCi()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_TangCi(x));
+        }
+
+        public void updateRec_YunXing()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_YunXing(x));
+        }
+
+        public void updateRec_ChuanChe()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_ChuanChe(x));
+        }
+        public void updateRec_ZhongJianChuanChe()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_ZhongJianChuanChe(x));
+        }
+        public void updateRec_Baojing()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_Baojing(x));
+        }
+        public void updateRec_BaojingHis()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_BaojingHis(x));
+        }
+
+        public void updateRec_DiaoTou()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_DiaoTou(x));
+        }
+        public void updateRec_BusDaZhan_New()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_BusDaZhan_New(x));
+        }
+        public void updateRec_ZuoYe_Check()
+        {
+            LineStationContext context = new LineStationContext();
+            lineStationList.Where(x => x.attach == 1).ToList().ForEach(x => context.updateRec_ZuoYe_Check(x));
         }
 
         public int getAllStationCount()
